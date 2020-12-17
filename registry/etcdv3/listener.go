@@ -108,7 +108,7 @@ func (l *configurationListener) Next() (*registry.ServiceEvent, error) {
 			if e.ConfigType == remoting.EventTypeDel && l.registry.client.Valid() {
 				select {
 				case <-l.registry.Done():
-					logger.Warnf("update @result{%s}. But its connection to registry is invalid", e.Value)
+					logger.Warnf("update @result{%s}. But its connection to registry is invalid", e.Value) //疑惑  configurationListener只是调试用的？？
 				default:
 				}
 				continue

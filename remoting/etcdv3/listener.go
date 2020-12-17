@@ -87,7 +87,7 @@ func (l *EventListener) ListenServiceNodeEvent(key string, listener ...remoting.
 			for _, event := range e.Events {
 				if l.handleEvents(event, listener...) {
 					// if event is delete
-					return true
+					return true //为啥要返回，即便是单节点，如果线下后重新上线怎么办呢
 				}
 			}
 		}

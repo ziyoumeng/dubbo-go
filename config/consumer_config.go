@@ -70,7 +70,7 @@ func (c *ConsumerConfig) UnmarshalYAML(unmarshal func(interface{}) error) error 
 	if err := defaults.Set(c); err != nil {
 		return err
 	}
-	type plain ConsumerConfig
+	type plain ConsumerConfig //疑问 定义plain的作用？
 	if err := unmarshal((*plain)(c)); err != nil {
 		return err
 	}

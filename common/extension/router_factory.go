@@ -26,9 +26,9 @@ import (
 )
 
 var (
-	routers               = make(map[string]func() router.PriorityRouterFactory)
+	routers               = make(map[string]func() router.PriorityRouterFactory) //支持的所有路由策略工厂,通过url来创建路由策略
 	fileRouterFactoryOnce sync.Once
-	fileRouterFactories   = make(map[string]router.FilePriorityRouterFactory)
+	fileRouterFactories   = make(map[string]router.FilePriorityRouterFactory)//本地的路由策略工厂,通过本地文件来创建路由策略
 )
 
 // SetRouterFactory sets create router factory function with @name
@@ -58,7 +58,7 @@ func GetFileRouterFactories() map[string]router.FilePriorityRouterFactory {
 	fileRouterFactoryOnce.Do(func() {
 		for k := range routers {
 			factory := GetRouterFactory(k)
-			if fr, ok := factory.(router.FilePriorityRouterFactory); ok {
+			if fr, ok := factory.(router.FilePriorityRouterFactory); ok { //筛选出fileRouterFactories
 				fileRouterFactories[k] = fr
 			}
 		}

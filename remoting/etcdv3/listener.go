@@ -221,7 +221,7 @@ func (l *EventListener) ListenServiceEvent(key string, listener remoting.DataLis
 	logger.Infof("listen dubbo service key{%s}", key)
 	l.wg.Add(1)
 	go func(key string) {
-		if l.ListenServiceNodeEvent(key) {
+		if l.ListenServiceNodeEvent(key) { //疑问 监听了key前缀为什么还要监听key？
 			listener.DataChange(remoting.Event{Path: key, Action: remoting.EventTypeDel})
 		}
 		logger.Warnf("listenSelf(etcd key{%s}) goroutine exit now", key)

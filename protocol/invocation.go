@@ -20,7 +20,7 @@ package protocol
 import (
 	"reflect"
 )
-
+//对每个remote method的一次调用的抽象
 // Invocation is a invocation for each remote method.
 type Invocation interface {
 	// MethodName gets invocation method name.

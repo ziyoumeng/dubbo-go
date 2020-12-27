@@ -67,7 +67,7 @@ func initRouterConfig(content []byte, factories map[string]router.FilePriorityRo
 		if e == nil {
 			url := r.URL()
 			routerURLSet.Add(&url)
-			return nil
+			return nil //只会有一个成功？
 		}
 		logger.Warnf("router config type %s create fail {%v}\n", k, e)
 	}
